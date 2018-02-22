@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Navbar Basics of Bootstrap</title>
+	<!-- Latest compiled and minified CSS - from bootsrap site -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+	<!-- Note 1: This is the first thing you set for your navbar at the top of your screen -->
+	<!-- Side Note: "navbar-DEFAULT", default is the color you're working with; you can change that to some other name b.Strap has -->
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<!-- Note 2a: This is the button that is to be toggled on and off for the collapsed parts of the navbar -->
+					<!-- Also, set data-target="#something" because this is like an "id" in css - hence the # -->
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+		      	</button>
+		      	<!-- Note 3: The "navbar-BRAND" is where you put the "BRAND" your company is working with - hence, Google's search page has the same navbar-brand type thing -->
+				<a href="#" class="navbar-brand">IMGS</a>
+			</div>
+			<!-- Note 2b: This is where you use the data-target-id name that you created earlier - hence the "id" name -->
+		    <div class="collapse navbar-collapse" id="bs-nav-demo">
+		    	<!-- Note 4a: Naturally, the navbar will have what you are wanting inside of it on the left side of the screen -->
+				<ul class="nav navbar-nav">
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+				<!-- Note 4b: This will put what you are wanting on the right side of the screen - hence the "navbar-RIGHT" class -->
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Sign up</a></li>
+					<li><a href="#">Login</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="jumbotron">
+			<h1>The Image Gallery</h1>
+			<p>A bunch of beautiful images that I didn't take</p>
+		</div>
+	</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>
