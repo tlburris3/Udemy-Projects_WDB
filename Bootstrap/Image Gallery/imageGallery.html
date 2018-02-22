@@ -2,16 +2,21 @@
 <html>
 <head>
 	<title>Navbar Basics of Bootstrap</title>
+
 	<!-- Latest compiled and minified CSS - from bootsrap site -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+	<link rel="stylesheet" type="text/css" href="imageGalleryCSS.css">
+
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 <body>
 	<!-- Note 1: This is the first thing you set for your navbar at the top of your screen -->
 	<!-- Side Note: "navbar-DEFAULT", default is the color you're working with; you can change that to some other name b.Strap has -->
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
 				<!-- Note 2a: This is the button that is to be toggled on and off for the collapsed parts of the navbar -->
@@ -23,7 +28,7 @@
 			        <span class="icon-bar"></span>
 		      	</button>
 		      	<!-- Note 3: The "navbar-BRAND" is where you put the "BRAND" your company is working with - hence, Google's search page has the same navbar-brand type thing -->
-				<a href="#" class="navbar-brand">IMGS</a>
+				<a href="#" class="navbar-brand"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> IMGS</a>
 			</div>
 			<!-- Note 2b: This is where you use the data-target-id name that you created earlier - hence the "id" name -->
 		    <div class="collapse navbar-collapse" id="bs-nav-demo">
@@ -42,8 +47,56 @@
 	</nav>
 	<div class="container">
 		<div class="jumbotron">
-			<h1>The Image Gallery</h1>
+			<h1><i class="fas fa-camera-retro"></i> The Image Gallery</h1>
 			<p>A bunch of beautiful images that I didn't take</p>
+		</div>
+		<div class="row">
+			<!-- Because of Bootstrap, the pictures automatically wrap to the next line on the page -->
+			<div class="col-md-4 col-sm-6">
+				<div class="thumbnail">
+					<img src="https://images.unsplash.com/photo-1435771112039-1e5b2bcad966?dpr=2&fit=crop&fm=jpg&h=825&q=50&w=1450">
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="thumbnail">
+					<img src="https://images.unsplash.com/photo-1435771112039-1e5b2bcad966?dpr=2&fit=crop&fm=jpg&h=825&q=50&w=1450">
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="thumbnail">
+					<img src="https://images.unsplash.com/photo-1435771112039-1e5b2bcad966?dpr=2&fit=crop&fm=jpg&h=825&q=50&w=1450">
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="thumbnail">
+					<img src="https://images.unsplash.com/photo-1435771112039-1e5b2bcad966?dpr=2&fit=crop&fm=jpg&h=825&q=50&w=1450">
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="thumbnail">
+					<img src="https://images.unsplash.com/photo-1435771112039-1e5b2bcad966?dpr=2&fit=crop&fm=jpg&h=825&q=50&w=1450">
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="thumbnail">
+					<img src="https://images.unsplash.com/photo-1435771112039-1e5b2bcad966?dpr=2&fit=crop&fm=jpg&h=825&q=50&w=1450">
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="thumbnail">
+					<img src="https://images.unsplash.com/photo-1435771112039-1e5b2bcad966?dpr=2&fit=crop&fm=jpg&h=825&q=50&w=1450">
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="thumbnail">
+					<img src="https://images.unsplash.com/photo-1435771112039-1e5b2bcad966?dpr=2&fit=crop&fm=jpg&h=825&q=50&w=1450">
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6">
+				<div class="thumbnail">
+					<img src="https://images.unsplash.com/photo-1435771112039-1e5b2bcad966?dpr=2&fit=crop&fm=jpg&h=825&q=50&w=1450">
+				</div>
+			</div>
 		</div>
 	</div>
 
