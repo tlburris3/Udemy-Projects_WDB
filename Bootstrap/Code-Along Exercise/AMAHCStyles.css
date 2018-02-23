@@ -1,0 +1,33 @@
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	background: url(https://images.unsplash.com/photo-1504208434309-cb69f4fe52b0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f35e7bc5ab7c860cef3684c704b7fe1f&auto=format&fit=crop&w=1050&q=80);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	font-family: Lato;
+	color: white;
+}
+
+#content {
+	text-align: center;
+	/*padding-top: 20%; - for centered of screen*/
+	padding-top: 17%;
+	text-align: left;
+	text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+				 0px 8px 13px rgba(0, 0, 0, 1),
+				 0px 18px 24px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+	font-weight: 700;
+	font-size: 5em;
+}
+
+hr {
+	width: 490px;
+	color: black;
+	margin: 20px 690px 20px 0px;
+}
