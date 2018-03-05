@@ -15,6 +15,9 @@ function isEven(num)
 		return false;
 }
 
+// solutions way:
+// function isEven(num) { return num % 2 === 0;}
+
 // factorial()
 // 	Purpose:
 // 		Implement the factorial of a number that is given by the function's parameters.
@@ -32,26 +35,33 @@ function factorial (num)
 	return num * factorial(num - 1);
 }
 
+// solutions way:
+// function factorial(num) {
+//		for (var i = num-1; i >= 0; i--)
+//		{
+//			return num * i;
+//		}
+//}
+
 // kebabToSnake()
 // 	Purpose:
 // 		Replace "-" with "_" if relevant.
 // 	Parameters:
 // 		str: a string that will either have a "-" or not.
 // 	Returns:
-// 		str: the same string that was started with if there was not a "-".
-// 		newStr: a new string that now has a "_".
+// 		str: same string if "-" is not present.
+//		newStr: new string if "_" is replaced.
+// 		
 
 function kebabToSnake(str)
 {
-	if (str.indexOf("-") === false)
+	if (str.indexOf("-") === -1)
 		return str;
-	else
-	{
-		for (var i = 0; i < str.length; i++)
-		{
-			if (str[i] === "-")
-				str[i] = "_";
-		}
-		return str;
-	}
+
+	var newStr = str.replace(/-/g, "_");
+
+	return newStr;
 }
+
+// solutions way:
+// function kebabToSnake(str) {var newStr = str.replace(/-/g, "_"); return newStr;}
