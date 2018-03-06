@@ -119,3 +119,13 @@ myForEach(["joe", "bill", "bob"], function() {alert("Hi!");});
 // declaration of the myForEach function is using the second () that is needed in
 // order to execute the desired function - i.e. "console.log(..)".
 myForEach(["joe", "bill", "bob"], function(name) {console.log("Hi " + name + "!");});
+
+// Now comes the prototype - where the Array object is now going to be able to access
+// the myForEach function because it will be acquainted with the Array class.
+Array.prototype.myForEach = function (func) {
+	// this - keyword that is associated with the specific array which is being used.
+	// i.e. : "arr.myForEach(func(variable) {...});"
+	for (var i = 0; i < this.length; i++) {
+		console.log("Hello there " + this[i] + "!");
+	}
+}
