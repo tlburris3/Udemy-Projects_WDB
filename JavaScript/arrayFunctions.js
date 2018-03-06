@@ -113,3 +113,9 @@ function myForEach(arr, func) {
 // are inside the array that was passed in, since that is what the
 // myForEach loop does inside the code behind the scenes.
 myForEach(["joe", "bill", "bob"], function() {alert("Hi!");});
+
+// With or without the parameter inside the anonymous function's parenthesis, I am
+// able to still execute this call to myForEach because the func parameter inside the
+// declaration of the myForEach function is using the second () that is needed in
+// order to execute the desired function - i.e. "console.log(..)".
+myForEach(["joe", "bill", "bob"], function(name) {console.log("Hi " + name + "!");});
