@@ -121,7 +121,7 @@ myForEach(["joe", "bill", "bob"], function() {alert("Hi!");});
 myForEach(["joe", "bill", "bob"], function(name) {console.log("Hi " + name + "!");});
 
 // Now comes the prototype - where the Array object is now going to be able to access
-// the myForEach function because it will be acquainted with the Array class.
+// the myForEach function because it will be associated with the Array class.
 Array.prototype.myForEach = function (func) {
 	// this - keyword that is associated with the specific array which is being used.
 	// i.e. : "arr.myForEach(func(variable) {...});"
