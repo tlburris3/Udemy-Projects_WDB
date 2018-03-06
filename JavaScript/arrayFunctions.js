@@ -83,3 +83,22 @@ function max(input) {
 
 	return max;
 }
+
+// myForEach
+//
+// Purpose:
+//		Created to make my own .forEach loop, through progression steps.
+// 		Uses a function every iteration of a loop in order to execute the
+// 		proper function that is desired from the user of the .myForEach.
+// Parameters:
+// 		arr: an array that contains elements that will be looped through.
+//		func: a function that will be executed every iteration - e.g. alert.
+// Notes:
+// 		This is a higher ordered function. May be short and simple,
+// 		but its task is to do something that a class from an object does.
+
+function myForEach(arr, func) {
+	for (var i = 0; i < arr.length; i++) {
+		func(arr[i]);
+	}
+}
