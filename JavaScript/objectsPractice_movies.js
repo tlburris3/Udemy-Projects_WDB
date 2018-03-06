@@ -25,14 +25,14 @@ var movies = [
 // Iterating through the movies array to print out
 // what is inside the movie objects.
 for (var i = 0; i < movies.length; i++) {
+	var result = "You have ";
 	if (movies[i].hasWatched === true) {
-		console.log("You have watched " + 
-			"\"" + movies[i].name + "\"" + " - "
-			+ movies[i].rating + " stars");
-	}
+		result += "watched ";
+	}		
 	else {
-		console.log("You have not watched " + 
-			"\"" + movies[i].name + "\"" + " - "
-			+ movies[i].rating + " stars");
+		result += "not watched ";
 	}
+	result += "\"" + movies[i].title + "\"";
+	result += " - " + movies[i].rating + " stars");
+	console.log(result);
 }
