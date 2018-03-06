@@ -22,17 +22,21 @@ var movies = [
 	}
 ];
 
-// Iterating through the movies array to print out
-// what is inside the movie objects.
-for (var i = 0; i < movies.length; i++) {
+function buildString(movie) {
 	var result = "You have ";
-	if (movies[i].hasWatched === true) {
+	if (movie.hasWatched === true) {
 		result += "watched ";
 	}		
 	else {
 		result += "not watched ";
 	}
-	result += "\"" + movies[i].title + "\"";
-	result += " - " + movies[i].rating + " stars");
-	console.log(result);
+	result += "\"" + movie.name + "\"";
+	result += " - " + movie.rating + " stars";
+	return result;
 }
+
+// Iterating through the movies array to print out
+// what is inside the movie objects.
+movies.forEach(function(movie) {
+	console.log(buildString(movie));
+});
