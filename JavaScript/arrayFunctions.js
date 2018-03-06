@@ -102,3 +102,14 @@ function myForEach(arr, func) {
 		func(arr[i]);
 	}
 }
+
+// This will be executed because of the () at the end.
+(function () {
+	console.log("Hi!");
+}) () // these () are what is inside the myForEach, that way the parameter
+// inside the anonymous functions call does not have to have them.
+
+// Here, the alert will be announced on the screen 3x because of how many names
+// are inside the array that was passed in, since that is what the
+// myForEach loop does inside the code behind the scenes.
+myForEach(["joe", "bill", "bob"], function() {alert("Hi!");});
