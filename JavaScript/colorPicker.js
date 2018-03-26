@@ -43,3 +43,25 @@ function changeColor() {
 	body.style.background = color;
 	console.log("color is: " + color);
 }
+
+/* Changing background based off of one color with an if statement */
+/*
+	var isPurple = false;
+
+	button.addEventListener("click", function (){
+		if (isPurple)
+			document.body.style.background = "white";
+		else
+			document.body.style.background = "purple";
+
+		isPurple = !isPurple;
+	});
+*/
+
+/* Another way is by the "toggle" function */
+/*
+	button.addEventListener("click", function() {
+		document.body.classList.toggle("purple");
+	});
+*/
+
