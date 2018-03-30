@@ -1,0 +1,20 @@
+body {
+	background-color: #232323;
+}
+
+h1 {
+	color: white;
+}
+
+.square {
+	width: 30%;
+	background: green;
+	padding-bottom: 30%; /*Puts space so the color is visual*/
+	float: left; /*Makes squares not line up vertically*/
+	margin: 1.66%; /*Boxes are 1.66% of their container*/
+}
+
+#container {
+	max-width: 600px;
+	margin: 0 auto; /*Centers the container on the screen*/
+}
