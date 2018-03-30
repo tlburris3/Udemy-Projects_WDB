@@ -2,10 +2,21 @@
 <html>
 <head>
 	<title>Todo List</title>
-	<script type="text/javascript" src="jsTodoList.js"></script>
+	 <!-- <script type="text/javascript" src="jsTodoList.js"></script> -->
+	 <style type="text/css">
+	 	.selected {
+	 		color: blue;
+	 	}
+
+	 	.completed {
+	 		text-decoration: line-through;
+	 		opacity: 0.5;
+	 	}
+	 </style>
 </head>
 <body>
 	<h1>Todo List</h1>
+	<!-- jsTodoList.js part -->
 	<ul> Type:
 		<!-- Note: from part 1 -->
 		<li>"new" - Add a Todo to list.</li>
@@ -13,5 +24,13 @@
 		<!-- Note: from part 2 --> <li>"delete" - Remove specific Todo.</li>
 		<li>"quit" - Quit app.</li>
 	</ul>
+
+	<ul>
+		<li>Wash Dog</li>
+		<li>Feed Dog</li>
+		<li>Get another Dog</li>
+	</ul>
+
+ <script type="text/javascript" src="hoverTodoList.js"></script>
 </body>
 </html>
