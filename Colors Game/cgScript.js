@@ -10,6 +10,7 @@ var colors = [
 var squares = document.querySelectorAll(".square");
 var goalColor = colors[3];
 var colorDisplay = document.getElementById("colorDisplay");
+var messageDisplay = document.querySelector("#message");
 
 colorDisplay.textContent = goalColor;
 
@@ -26,11 +27,29 @@ for (var i = 0; i < squares.length; i++) {
 		var clickedColor = this.style.backgroundColor
 		// compare color to goal color
 		if (clickedColor === goalColor) {
-			alert("correct");
+			messageDisplay.textContent = "Correct!"
+			changeColors(clickedColor);
 		}
 		else {
-			alert("wrong");
+			this.style.backgroundColor = "#232323";
+			messageDisplay.textContent = "Try again!";
 		}
 	});
+}
+
+/*
+ * changeColors
+ * 
+ * Purpose:
+ * 		Changes colors to all the squares
+ * 		as well as the background of the h1
+ *  	when player gets correct answer.
+ */
+function changeColors(color) {
+	// loop through squares
+	for (var i = 0; i < squares.length; i++) {
+		//change each color to match the given color
+		squares[i].style.backgroundColor = color;
+	}
 }
 
