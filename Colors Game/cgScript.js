@@ -8,7 +8,7 @@ var colors = [
 ]
 
 var squares = document.querySelectorAll(".square");
-var goalColor = colors[3];
+var goalColor = pickColor();
 var colorDisplay = document.getElementById("colorDisplay");
 var messageDisplay = document.querySelector("#message");
 
@@ -24,7 +24,7 @@ for (var i = 0; i < squares.length; i++) {
 	// Add click listeners to squares
 	squares[i].addEventListener("click", function() {
 		// Get color of clicked square
-		var clickedColor = this.style.backgroundColor
+		var clickedColor = this.style.backgroundColor;
 		// compare color to goal color
 		if (clickedColor === goalColor) {
 			messageDisplay.textContent = "Correct!"
@@ -51,5 +51,24 @@ function changeColors(color) {
 		//change each color to match the given color
 		squares[i].style.backgroundColor = color;
 	}
+}
+
+/*
+ * pickColor
+ * 
+ * Purpose:
+ * 		Random number generator with a range
+ * 		from 0-6. Number is used for which
+ *  	color will be used.
+ * Returns:
+ * 		Random color from hardcoded "colors" list.
+ * Notes:
+ *  	Math.random() returns 0 - 1, exclusive.
+ *  	* colors.length : 0 - (length-1).999...
+ * 		Math.floor() truncates the result.
+ */
+function pickColor() {
+	var rand = Math.floor(Math.random() * colors.length);
+	return colors[rand];
 }
 
