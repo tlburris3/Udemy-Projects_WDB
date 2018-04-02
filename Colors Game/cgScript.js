@@ -1,18 +1,11 @@
-var colors = [
-	"rgb(255, 0, 0)",
-	"rgb(255, 255, 0)",
-	"rgb(0, 255, 0)",
-	"rgb(0, 255, 255)",
-	"rgb(0, 0, 255)",
-	"rgb(255, 0, 255)"
-]
+var colors = generateRandomColors(6);
 
 var squares = document.querySelectorAll(".square");
-var goalColor = pickColor();
+var correctColor = generateAnswer();
 var colorDisplay = document.getElementById("colorDisplay");
 var messageDisplay = document.querySelector("#message");
 
-colorDisplay.textContent = goalColor;
+colorDisplay.textContent = correctColor;
 
 for (var i = 0; i < squares.length; i++) {
 	// add initial colors to squares
@@ -26,7 +19,7 @@ for (var i = 0; i < squares.length; i++) {
 		// Get color of clicked square
 		var clickedColor = this.style.backgroundColor;
 		// compare color to goal color
-		if (clickedColor === goalColor) {
+		if (clickedColor === correctColor) {
 			messageDisplay.textContent = "Correct!"
 			changeColors(clickedColor);
 		}
@@ -54,7 +47,7 @@ function changeColors(color) {
 }
 
 /*
- * pickColor
+ * generateAnswer
  * 
  * Purpose:
  * 		Random number generator with a range
@@ -67,8 +60,52 @@ function changeColors(color) {
  *  	* colors.length : 0 - (length-1).999...
  * 		Math.floor() truncates the result.
  */
-function pickColor() {
+function generateAnswer() {
 	var rand = Math.floor(Math.random() * colors.length);
 	return colors[rand];
 }
 
+/*
+ * generateRandomColors
+ * 
+ * Purpose:
+ * 		Fills and returns an array of size 
+ *  	"amt" that is filled with
+ * 		randomly generated colors.
+ * Returns:
+ * 		An array of "amt" random colors.
+ * Notes:
+ *  	Uses randomRGB to produce the colors.
+ */
+function generateRandomColors(amt) {
+	var retArray = [];
+	// add amt of colors to array
+	for (var i = 0; i < amt; i++) {
+		retArray.push(randomRGB());
+	}
+
+	return retArray;
+}
+
+/*
+ * randomRGB
+ * 
+ * Purpose:
+ * 		Fills and returns an array of size 
+ *  	"amt" that is filled with
+ * 		randomly generated colors.
+ * Returns:
+ * 		A generated rgb(...) string.
+ * Notes:
+ *  	
+ */
+function randomRGB() {
+	// red
+	var rRand = Math.floor(Math.random() * 256);
+	// green
+	var gRand = Math.floor(Math.random() * 256);
+	// blue
+	var bRand = Math.floor(Math.random() * 256);
+
+	return "rgb(" + rRand + ", " + gRand + ", " + bRand + ")";
+}
