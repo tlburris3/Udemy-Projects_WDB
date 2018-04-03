@@ -1,27 +1,47 @@
-var colors = generateRandomColors(6);
-
+/* Selectors */
+var h1 = document.querySelector("h1");
 var squares = document.querySelectorAll(".square");
-var correctColor = generateAnswer();
 var colorDisplay = document.getElementById("colorDisplay");
 var messageDisplay = document.querySelector("#message");
+var resetButton = document.querySelector("#reset")
 
+/* Instances */
+var colors = generateRandomColors(6);
+var correctColor = generateAnswer();
+
+/* Common Code */
 colorDisplay.textContent = correctColor;
 
-for (var i = 0; i < squares.length; i++) {
-	// add initial colors to squares
+resetButton.addEventListener("click", function() {
+	// generate all new colors
+	colors = generateRandomColors(6);
+	// pick new random color from array
+	correctColor = generateAnswer();
+	// change colorDisplay to match correctColor
+	colorDisplay.textContent = correctColor;
+	// change colors of squares
+	for (var i = 0; i < squares.length; i++) {
+	// use bgColor instead bc of FireFox doesn't
+	// always work with just background only
+		squares[i].style.backgroundColor = colors[i];
+	}
+	h1.style.backgroundColor = "#232323";
+});
 
+for (var i = 0; i < squares.length; i++) {
 	// use bgColor instead bc of FireFox doesn't
 	// always work with just background only
 	squares[i].style.backgroundColor = colors[i];
 
-	// Add click listeners to squares
 	squares[i].addEventListener("click", function() {
 		// Get color of clicked square
 		var clickedColor = this.style.backgroundColor;
 		// compare color to goal color
 		if (clickedColor === correctColor) {
-			messageDisplay.textContent = "Correct!"
+			messageDisplay.textContent = "Correct!";
 			changeColors(clickedColor);
+			h1.style.background = correctColor;
+			resetButton.textContent = "Play Again?";
 		}
 		else {
 			this.style.backgroundColor = "#232323";
@@ -39,9 +59,7 @@ for (var i = 0; i < squares.length; i++) {
  *  	when player gets correct answer.
  */
 function changeColors(color) {
-	// loop through squares
 	for (var i = 0; i < squares.length; i++) {
-		//change each color to match the given color
 		squares[i].style.backgroundColor = color;
 	}
 }
@@ -79,7 +97,6 @@ function generateAnswer() {
  */
 function generateRandomColors(amt) {
 	var retArray = [];
-	// add amt of colors to array
 	for (var i = 0; i < amt; i++) {
 		retArray.push(randomRGB());
 	}
@@ -91,9 +108,9 @@ function generateRandomColors(amt) {
  * randomRGB
  * 
  * Purpose:
- * 		Fills and returns an array of size 
- *  	"amt" that is filled with
- * 		randomly generated colors.
+ * 		Gives back a rgb() string that
+ *  	will be used as one of the randomly
+ *  	created colors in the "colors" array.
  * Returns:
  * 		A generated rgb(...) string.
  * Notes:
