@@ -1,104 +1,24 @@
 /* Variables */
 var numOfSquares = 6;
+var colors = [];
+var correctColor;
 
 /* Selectors */
 var h1 = document.querySelector("h1");
 var squares = document.querySelectorAll(".square");
 var colorDisplay = document.getElementById("colorDisplay");
 var messageDisplay = document.querySelector("#message");
-var resetButton = document.querySelector("#reset")
-var easyButton = document.querySelector("#easy");
-var hardButton = document.querySelector("#hard");
-
-/* Instances */
-var colors = generateRandomColors(numOfSquares);
-var correctColor = generateAnswer();
+var resetButton = document.querySelector("#reset");
+var modeButtons = document.querySelectorAll(".mode");
 
 /* Common Code */
-colorDisplay.textContent = correctColor;
-
-for (var i = 0; i < squares.length; i++) {
-	// use bgColor instead bc of FireFox doesn't
-	// always work with just background only
-	squares[i].style.backgroundColor = colors[i];
-
-	squares[i].addEventListener("click", function() {
-		// Get color of clicked square
-		var clickedColor = this.style.backgroundColor;
-		// compare color to goal color
-		if (clickedColor === correctColor) {
-			messageDisplay.textContent = "Correct!";
-			changeColors(clickedColor);
-			h1.style.background = correctColor;
-			resetButton.textContent = "Play Again?";
-		}
-		else {
-			this.style.background = "#232323";
-			messageDisplay.textContent = "Try again!";
-		}
-	});
-}
-
-easyButton.addEventListener("click", function() {
-	easyButton.classList.add("selected");
-	hardButton.classList.remove("selected");
-	
-	numOfSquares = 3;
-	colors = generateRandomColors(numOfSquares);
-	
-	correctColor = generateAnswer();
-	colorDisplay.textContent = correctColor;
-	h1.style.background = "steelblue";
-	messageDisplay.textContent = "";
-	resetButton.textContent = "New Colors"
-
-	
-	for (var i = 0; i < squares.length; i++) {
-		if (colors[i])
-			squares[i].style.backgroundColor = colors[i];
-		else
-			squares[i].style.display = "none";
-	}
-});
-
-hardButton.addEventListener("click", function() {
-	hardButton.classList.add("selected");
-	easyButton.classList.remove("selected");
-
-	numOfSquares = 6;
-	colors = generateRandomColors(numOfSquares);
-
-	correctColor = generateAnswer();
-	colorDisplay.textContent = correctColor;
-	h1.style.background = "steelblue";
-	messageDisplay.textContent = "";
-	resetButton.textContent = "New Colors"
-
-	
-	for (var i = 0; i < squares.length; i++) {
-		squares[i].style.backgroundColor = colors[i];
-		squares[i].style.display = "block";
-	}
-});
+init();
 
 resetButton.addEventListener("click", function() {
-	// generate all new colors
-	colors = generateRandomColors(numOfSquares);
-	// pick new random color from array
-	correctColor = generateAnswer();
-	// change colorDisplay to match correctColor
-	colorDisplay.textContent = correctColor;
-	resetButton.textContent = "New Colors"
-	messageDisplay.textContent = "";
-	// change colors of squares
-	for (var i = 0; i < squares.length; i++) {
-	// use bgColor instead bc of FireFox doesn't
-	// always work with just background only
-		squares[i].style.backgroundColor = colors[i];
-	}
-	h1.style.backgroundColor = "steelblue";
+	reset();
 });
 
+/* Functions */
 /*
  * changeColors
  * 
@@ -175,3 +95,114 @@ function randomRGB() {
 
 	return "rgb(" + rRand + ", " + gRand + ", " + bRand + ")";
 }
+
+/*
+ * setupSquares
+ * 
+ * Purpose:
+ * 		Sets up the squares on the screen.
+ * Notes:
+ *  	Button listeners and colors.
+ */
+function setupSquares() {
+/* Sets click listeners to each square on screen */
+	for (var i = 0; i < squares.length; i++) {
+		squares[i].addEventListener("click", function() {
+			// Get color of clicked square
+			var clickedColor = this.style.backgroundColor;
+			// compare color to correct color
+			if (clickedColor === correctColor) {
+				messageDisplay.textContent = "Correct!";
+				changeColors(clickedColor);
+				h1.style.background = correctColor;
+				resetButton.textContent = "Play Again?";
+			}
+			else {
+				this.style.background = "#232323";
+				messageDisplay.textContent = "Try again!";
+			}
+		});
+	}
+}
+
+/*
+ * setupModeButtons
+ * 
+ * Purpose:
+ * 		Sets up the listeners for the
+ *  	difficulty buttons.
+ * Notes:
+ *  	"Easy" - 3 squares
+ * 		"Hard" - 6 squares
+ */
+function setupModeButtons() {
+	for (var i = 0; i < modeButtons.length; i++) {
+		modeButtons[i].addEventListener("click", function() {
+			for (var j = 0; j < modeButtons.length; j++)
+				modeButtons[j].classList.remove("selected");
+			this.classList.add("selected");
+
+			switch (this.textContent) {
+				case "Easy":
+					numOfSquares = 3;
+					break;
+				case "Hard":
+					numOfSquares = 6;
+					break;
+			}
+			reset();
+		});
+	}
+}
+
+/*
+ * reset
+ * 
+ * Purpose:
+ * 		Generates new colors, a new answer,
+ * 		sets back all text contents to default,
+ * 		the h1 back to original color, as well as
+ * 		all the squares back to display based on difficulty.
+ * Notes:
+ *  	
+ */
+function reset() {
+	// generate all new colors
+	colors = generateRandomColors(numOfSquares);
+	// pick new random color from array
+	correctColor = generateAnswer();
+	// change text contents to default
+	colorDisplay.textContent = correctColor;
+	resetButton.textContent = "New Colors"
+	messageDisplay.textContent = "";
+	// change colors of squares
+	for (var i = 0; i < squares.length; i++) {
+		// If there is a color, the square is
+		// displayed, and the background color
+		// of the square is changed to that of colors[i].
+		if (colors[i]) {
+			squares[i].style.display = "block";
+			squares[i].style.backgroundColor = colors[i];
+		}
+		else {
+			squares[i].style.display = "none";
+		}
+	}
+	h1.style.backgroundColor = "steelblue";
+}
+
+/*
+ * init
+ * 
+ * Purpose:
+ * 		The initilization of the colors game.
+ * 		Sets up the buttons and squares.
+ * Notes:
+ *  	
+ */
+function init() {
+	setupModeButtons();
+	setupSquares();
+	reset();
+}
+

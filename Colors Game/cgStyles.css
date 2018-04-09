@@ -14,6 +14,23 @@ h1 {
 	margin: 0;
 	padding: 20px 0;
 }
+button {
+	border: none;
+	text-transform: uppercase;
+	height: 100%;
+	font-weight: 700;
+	color: steelblue;
+	letter-spacing: 1px;
+	font-size: inherit;
+	outline: none;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+}
+button:hover, .selected {
+	color: white;
+	background-color: steelblue;
+}
 
 /* Classes */
 .square {
@@ -22,22 +39,27 @@ h1 {
 	padding-bottom: 30%; /*Puts space so the color is visual*/
 	float: left; /*Makes squares not line up vertically*/
 	margin: 1.66%; /*Boxes are 1.66% of their container*/
+	border-radius: 15%; /* Rounds the edges of the squares */
+	transition: background-color .6s;
+	-webkit-transition: background-color .6s;
+	-moz-transition: background-color .6s;
 }
 .stripe {
 	background: white;
 	height: 30px;
 	text-align: center;
 }
-.selected {
-	background-color: blue;
-}
 
 /* IDs */
 #container {
 	max-width: 600px;
-	margin: 0 auto; /*Centers the container on the screen*/
+	margin: 20px auto; /*Centers the container on the screen*/
 }
 #colorDisplay {
 	font-size: 200%;
 	line-height: 1.1;
+}
+#message {
+	display: inline-block;
+	width: 20%;
 }
