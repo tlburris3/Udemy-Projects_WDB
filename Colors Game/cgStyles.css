@@ -1,9 +1,18 @@
 /* Tags */
 body {
 	background-color: #232323;
+	margin: 0;
+	font-family: "Montserrat", "Avenir"
+
 }
 h1 {
+	background-color: steelblue;
 	color: white;
+	text-align: center;
+	font-weight: normal;
+	text-transform: uppercase;
+	margin: 0;
+	padding: 20px 0;
 }
 
 /* Classes */
@@ -19,9 +28,16 @@ h1 {
 	height: 30px;
 	text-align: center;
 }
+.selected {
+	background-color: blue;
+}
 
 /* IDs */
 #container {
 	max-width: 600px;
 	margin: 0 auto; /*Centers the container on the screen*/
+}
+#colorDisplay {
+	font-size: 200%;
+	line-height: 1.1;
 }

@@ -1,32 +1,21 @@
+/* Variables */
+var numOfSquares = 6;
+
 /* Selectors */
 var h1 = document.querySelector("h1");
 var squares = document.querySelectorAll(".square");
 var colorDisplay = document.getElementById("colorDisplay");
 var messageDisplay = document.querySelector("#message");
 var resetButton = document.querySelector("#reset")
+var easyButton = document.querySelector("#easy");
+var hardButton = document.querySelector("#hard");
 
 /* Instances */
-var colors = generateRandomColors(6);
+var colors = generateRandomColors(numOfSquares);
 var correctColor = generateAnswer();
 
 /* Common Code */
 colorDisplay.textContent = correctColor;
-
-resetButton.addEventListener("click", function() {
-	// generate all new colors
-	colors = generateRandomColors(6);
-	// pick new random color from array
-	correctColor = generateAnswer();
-	// change colorDisplay to match correctColor
-	colorDisplay.textContent = correctColor;
-	// change colors of squares
-	for (var i = 0; i < squares.length; i++) {
-	// use bgColor instead bc of FireFox doesn't
-	// always work with just background only
-		squares[i].style.backgroundColor = colors[i];
-	}
-	h1.style.backgroundColor = "#232323";
-});
 
 for (var i = 0; i < squares.length; i++) {
 	// use bgColor instead bc of FireFox doesn't
@@ -44,11 +33,71 @@ for (var i = 0; i < squares.length; i++) {
 			resetButton.textContent = "Play Again?";
 		}
 		else {
-			this.style.backgroundColor = "#232323";
+			this.style.background = "#232323";
 			messageDisplay.textContent = "Try again!";
 		}
 	});
 }
+
+easyButton.addEventListener("click", function() {
+	easyButton.classList.add("selected");
+	hardButton.classList.remove("selected");
+	
+	numOfSquares = 3;
+	colors = generateRandomColors(numOfSquares);
+	
+	correctColor = generateAnswer();
+	colorDisplay.textContent = correctColor;
+	h1.style.background = "steelblue";
+	messageDisplay.textContent = "";
+	resetButton.textContent = "New Colors"
+
+	
+	for (var i = 0; i < squares.length; i++) {
+		if (colors[i])
+			squares[i].style.backgroundColor = colors[i];
+		else
+			squares[i].style.display = "none";
+	}
+});
+
+hardButton.addEventListener("click", function() {
+	hardButton.classList.add("selected");
+	easyButton.classList.remove("selected");
+
+	numOfSquares = 6;
+	colors = generateRandomColors(numOfSquares);
+
+	correctColor = generateAnswer();
+	colorDisplay.textContent = correctColor;
+	h1.style.background = "steelblue";
+	messageDisplay.textContent = "";
+	resetButton.textContent = "New Colors"
+
+	
+	for (var i = 0; i < squares.length; i++) {
+		squares[i].style.backgroundColor = colors[i];
+		squares[i].style.display = "block";
+	}
+});
+
+resetButton.addEventListener("click", function() {
+	// generate all new colors
+	colors = generateRandomColors(numOfSquares);
+	// pick new random color from array
+	correctColor = generateAnswer();
+	// change colorDisplay to match correctColor
+	colorDisplay.textContent = correctColor;
+	resetButton.textContent = "New Colors"
+	messageDisplay.textContent = "";
+	// change colors of squares
+	for (var i = 0; i < squares.length; i++) {
+	// use bgColor instead bc of FireFox doesn't
+	// always work with just background only
+		squares[i].style.backgroundColor = colors[i];
+	}
+	h1.style.backgroundColor = "steelblue";
+});
 
 /*
  * changeColors
