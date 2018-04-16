@@ -7,3 +7,8 @@ body {
 	width: 360px;
 	margin: 0px auto;
 }
+
+.completed {
+	color: gray;
+	text-decoration: line-through;
+}
